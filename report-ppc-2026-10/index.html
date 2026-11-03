@@ -134,6 +134,9 @@ thead th{background:var(--surface-2);color:var(--muted);font-weight:700;font-siz
 tbody td{border-bottom:0}
 .tbl .cname{font-weight:700}
 .tbl .ctype{color:var(--faint);font-size:.76rem;font-weight:500}
+/* single-row campaign table: center each value under its header, keep name start-aligned */
+.tbl th,.tbl td{text-align:center;vertical-align:middle}
+.tbl th:first-child,.tbl td:first-child{text-align:start}
 
 /* growth highlight */
 .grow{display:flex;gap:14px;align-items:flex-start;background:var(--amber-soft);
@@ -279,7 +282,6 @@ tbody td{border-bottom:0}
       <li>העלות, החשיפות, הקליקים ו־CTR נלקחו ישירות ממערכת <b>גוגל אדס</b> (1,940.25 ₪, טווח 08–31/10).</li>
       <li>הפניות נספרו מ<b>דשבורד הלידים החי</b> של האתר — כל שיחה, לחיצת וואטסאפ ושליחת טופס שהגיעה ממודעה ממומנת (זוהתה לפי מזהה הקליק של גוגל). בדיקות פנימיות ופניות ממקורות אחרים סוננו החוצה.</li>
       <li>קליק לחיוג או לוואטסאפ מבטא <b>כוונת פנייה</b> (פתיחת שיחה/צ׳אט) — ולא אישור ששיחה נענתה. שתי שליחות הטופס הן פניות מלאות ומאומתות.</li>
-      <li>הקמפיין פעל רק <b>24 ימים</b> החודש (עלה לאוויר ב־08/10), כך שזהו חודש פעילות ראשון וחלקי.</li>
     </ul>
   </div>
 
