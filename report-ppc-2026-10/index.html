@@ -149,6 +149,27 @@ tbody td{border-bottom:0}
   padding:14px 18px;margin-top:12px;font-size:.9rem;color:var(--fg)}
 .learn b{color:var(--steel)}
 
+/* recommendation */
+.reco{background:linear-gradient(135deg,var(--teal-soft),var(--blue-soft));
+  border:1px solid color-mix(in srgb,var(--teal) 34%,transparent);border-radius:var(--r);
+  padding:20px 22px}
+.reco-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.reco-top .ri{font-size:1.4rem;line-height:1}
+.reco-top h3{font-size:1.12rem;font-weight:800;color:var(--ink-2)}
+.reco p{margin:0 0 14px;font-size:.95rem;color:var(--fg);max-width:70ch}
+.reco p b{color:var(--teal)}
+.budget{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--r-sm);padding:14px 20px}
+.budget .bx .bl{color:var(--muted);font-size:.74rem;font-weight:600}
+.budget .bx .bn{font-size:1.45rem;font-weight:800;letter-spacing:-.5px;margin-top:2px}
+.budget .old .bn{color:var(--faint)}
+.budget .new .bn{color:var(--teal)}
+.budget .arw{font-size:1.4rem;color:var(--amber);font-weight:800}
+.budget .plus{margin-inline-start:auto;background:var(--amber-soft);color:var(--amber);
+  font-weight:800;font-size:.92rem;padding:6px 14px;border-radius:999px;
+  border:1px solid color-mix(in srgb,var(--amber) 30%,transparent)}
+@media (max-width:460px){.budget{gap:12px}.budget .plus{margin-inline-start:0}}
+
 /* caveats */
 .notes{margin-top:30px;background:var(--surface-2);border:1px solid var(--border);
   border-radius:var(--r-sm);padding:16px 18px}
@@ -269,10 +290,29 @@ tbody td{border-bottom:0}
       <div class="gi">📈</div>
       <div class="gt">הקמפיין הגיע למגבלת התקציב היומי והחמיץ <b>58% מהחשיפות</b> האפשריות בחיפושים הרלוונטיים.
       כלומר יותר ממחצית מהגולשים שחיפשו את השירות בגוגל כלל לא ראו את המודעה — <b>מרחב צמיחה משמעותי</b>:
-      הגדלת התקציב צפויה להגדיל בהתאם את החשיפות, הקליקים והפניות.</div>
+      הגדלת התקציב צפויה להגדיל בהתאם את החשיפות, הקליקים והפניות. נכון לימים האחרונים הנתון אף
+      עלה לכ־<b>80%</b> — כלומר הבעיה מחריפה ככל שהביקוש גדל.</div>
     </div>
     <div class="learn"><span>🎯</span><div>הקמפיין עלה לאוויר רק ב־08/10 ועדיין <b>במצב למידה</b> של גוגל —
     ככל שהמערכת צוברת נתונים, הביצועים ומחיר הפנייה צפויים להשתפר בחודשים הבאים.</div></div>
+  </section>
+
+  <!-- RECOMMENDATION -->
+  <section>
+    <div class="sec-head"><h2>המלצה להמשך</h2></div>
+    <div class="reco">
+      <div class="reco-top"><span class="ri">🚀</span><h3>הגדלת התקציב ב־20%</h3></div>
+      <p>כיום אנחנו מפספסים <b>כ־80% מהגולשים</b> שמחפשים את השירות בגוגל, בגלל מגבלת התקציב היומי
+      (באוקטובר הנתון היה 58%, ומאז עלה) — זהו ביקוש אמיתי וקיים שפשוט לא מגיע אלינו. ההמלצה שלי:
+      להגדיל את התקציב היומי ב־<b>20%</b>, ובמקביל אני מבצע שינויים ואופטימיזציות נוספות בקמפיין.
+      לאחר מכן נמדוד יחד את התוצאות.</p>
+      <div class="budget">
+        <div class="bx old"><div class="bl">תקציב נוכחי</div><div class="bn num">100 ₪ / יום</div></div>
+        <div class="arw">←</div>
+        <div class="bx new"><div class="bl">מומלץ</div><div class="bn num">120 ₪ / יום</div></div>
+        <span class="plus num">+20%</span>
+      </div>
+    </div>
   </section>
 
   <!-- NOTES -->
