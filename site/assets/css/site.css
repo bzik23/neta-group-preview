@@ -229,7 +229,7 @@ input,select,textarea{font:inherit}
 .steps--inline{margin-top:8px}
 
 /* ---------- בלוק החוק ---------- */
-.law{display:flex;gap:16px;padding:20px 22px;background:rgba(var(--brass-rgb),.07);border:1px solid var(--line-brass);border-inline-start:3px solid var(--brass);border-radius:var(--radius-s);margin:22px 0}
+.law{display:flex;gap:16px;padding:20px 22px;background:linear-gradient(to left,rgba(var(--brass-rgb),.11),rgba(var(--brass-rgb),.05));border:1px solid var(--line-brass);border-radius:var(--radius-s);margin:22px 0}
 .law-ic{color:var(--brass);flex:0 0 auto;padding-top:2px}
 .law-ic .ic{width:24px;height:24px;stroke-width:1.4}
 .law-t{margin:0 0 6px;font-weight:600;color:var(--ink);line-height:1.5}
@@ -346,7 +346,7 @@ input,select,textarea{font:inherit}
 .prose a:hover,.faq-a a:hover,.aud a:hover{text-decoration-color:var(--brass)}
 .prose strong{color:var(--ink)}
 .prose ul li,.prose ol li{margin-bottom:.4em}
-.prose blockquote{margin:1.5em 0;padding:16px 20px;border-inline-start:3px solid var(--brass);background:var(--surface);border-radius:var(--radius-s);color:var(--ink)}
+.prose blockquote{margin:1.5em 0;padding:16px 20px;border:1px solid var(--line-brass);background:var(--surface);border-radius:var(--radius-s);color:var(--ink);font-family:var(--font-display);font-size:1.1em}
 .prose blockquote p:last-child{margin:0}
 .prose table{width:100%;border-collapse:collapse;font-size:.95rem;margin:1.2em 0}
 .prose th,.prose td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:start;vertical-align:top}
