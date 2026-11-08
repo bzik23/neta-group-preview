@@ -185,26 +185,6 @@
     d.addEventListener('click', function (e) { if (!a11y.contains(e.target) && !aPanel.hidden) setPanel(false); });
   }
 
-  /* ---------- מתג פלטה (פריוויו בלבד): סגול / כחול / פליז; לפליז תמונת אווירה חמה ---------- */
-  var sw = d.getElementById('theme-sw');
-  if (sw) {
-    function applyTheme(t) {
-      if (t === 'violet') d.documentElement.removeAttribute('data-theme'); else d.documentElement.setAttribute('data-theme', t);
-      try { localStorage.setItem('ng-theme', t); } catch (e) {}
-      sw.querySelectorAll('[data-theme-pick]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.themePick === t ? 'true' : 'false'); });
-      var warm = t === 'brass';
-      d.querySelectorAll('.hero-media source, .hero-media img, .about-frame img, .hero-panel-img img').forEach(function (el) {
-        var attr = el.tagName === 'SOURCE' ? 'srcset' : 'src';
-        var v = el.getAttribute(attr); if (!v) return;
-        v = v.replace(/(hero-atmosphere(?:-mobile)?|atmosphere-portrait)(-warm)?\./, function (_, base) { return base + (warm ? '-warm' : '') + '.'; });
-        el.setAttribute(attr, v);
-      });
-    }
-    var cur = 'violet'; try { cur = localStorage.getItem('ng-theme') || 'violet'; } catch (e) {}
-    applyTheme(cur);
-    sw.addEventListener('click', function (e) { var b = e.target.closest('[data-theme-pick]'); if (b) applyTheme(b.dataset.themePick); });
-  }
-
   /* ---------- קישורי עוגן לטופס: מיקוד לשדה הראשון ---------- */
   d.querySelectorAll('a[href="#contact-form"]').forEach(function (a) {
     a.addEventListener('click', function () {

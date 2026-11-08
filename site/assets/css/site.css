@@ -1,13 +1,13 @@
 /* ============================================================================
    נטע גרופ - גיליון סגנון ראשי
-   שפה: שחור עמוק, גרפיט, לבן חם, פליז מעושן. תחושה תיעודית, אור צד, קווים עדינים.
+   שפה: פחם עמוק, טקסט לבן, סגול + טורקיז. תחושה תיעודית, אור צד, קווים עדינים.
    ========================================================================== */
 :root{
   /* רקע ומשטחים: פחם מורם משחור טהור, טקסט לבן כמעט מלא (קריאות) */
   --bg:#0E0F12; --bg-rgb:14,15,18; --bg-2:#121318; --surface:#1A1B20; --surface-2:#22242A; --surface-3:#2B2D34;
   --ink:#F5F6F8; --ink-rgb:245,246,248; --ink-2:#D6D8DE; --ink-3:#ABAFB8;
   --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.18);
-  /* פלטה (ברירת מחדל: סגול + טורקיז). חלופות ב-[data-theme] */
+  /* פלטה: סגול (פעולה, הדגשות) + טורקיז (נגיעות משניות). נבחרה 08/11/2026 */
   --accent:#8B5CF6; --accent-light:#B49CFF; --accent-deep:#6D28D9; --accent-rgb:139,92,246; --on-accent:#FFFFFF;
   --btn:#7C3AED; --btn-hover:#8B5CF6;
   --accent2:#2DD4BF; --accent2-rgb:45,212,191;
@@ -21,8 +21,6 @@
   --shadow:0 20px 50px -20px rgba(0,0,0,.7), 0 2px 8px rgba(0,0,0,.35);
   color-scheme:dark;
 }
-[data-theme="blue"]{--accent:#3B82F6;--accent-light:#8AB8FF;--accent-deep:#1D4ED8;--accent-rgb:59,130,246;--btn:#2563EB;--btn-hover:#3B82F6;--accent2:#22D3EE;--accent2-rgb:34,211,238;--line-accent:rgba(59,130,246,.42)}
-[data-theme="brass"]{--accent:#C4A46B;--accent-light:#D9BE86;--accent-deep:#8E7647;--accent-rgb:196,164,107;--on-accent:#15120B;--btn:#C4A46B;--btn-hover:#D9BE86;--accent2:#C4A46B;--accent2-rgb:196,164,107;--line-accent:rgba(196,164,107,.35);--bg:#090A0C;--bg-rgb:9,10,12;--bg-2:#0C0E11;--surface:#15171B;--surface-2:#1B1E23;--surface-3:#23272D}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + 16px)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:1.1rem;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
@@ -583,10 +581,3 @@ html.a11y-motion .hero-media video{display:none}
   body::before{display:none}
   a{color:#000}
 }
-
-/* ---------- מתג פלטה (פריוויו בלבד, מוסר בייצור) ---------- */
-.theme-sw{position:fixed;z-index:900;top:calc(var(--hdr) + 10px);left:12px;display:flex;gap:4px;padding:4px;background:rgba(0,0,0,.6);border:1px solid var(--line-2);border-radius:999px;backdrop-filter:blur(10px)}
-.theme-sw button{padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--ink-2)}
-.theme-sw button[aria-pressed="true"]{background:var(--btn);color:var(--on-accent)}
-.theme-sw i{width:10px;height:10px;border-radius:50%;display:inline-block;margin-inline-end:6px;vertical-align:-1px}
-@media (max-width:900px){.theme-sw{top:calc(var(--hdr) + 8px);left:8px;padding:3px;opacity:.92}.theme-sw button{padding:5px 9px;font-size:.76rem}}
