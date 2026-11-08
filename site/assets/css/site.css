@@ -155,6 +155,12 @@ input,select,textarea{font:inherit}
 .hero--b{min-height:calc(100svh - var(--hdr));display:flex;flex-direction:column}
 .hero--b .hero-in{flex:1 1 auto;display:grid;align-items:center;padding-block:clamp(40px,6vh,72px) clamp(32px,5vh,56px)}
 .hero--b .hero-content{max-width:640px}
+/* דסקטופ (זיו 08/11): בלוק התוכן מעט גבוה יותר (ריפוד תחתון גדול מהעליון מזיז את מרכז היישור למעלה)
+   ומעט ימינה, אל מחוץ לקו ה-wrap, רק כשיש מקום בשוליים (עד 56px, ותמיד נשארים לפחות 48px מקצה המסך; ב-1280 ומטה כמעט אין הזזה) */
+@media (min-width:901px){
+  .hero--b .hero-in{padding-block:clamp(20px,3vh,36px) clamp(80px,13vh,150px)}
+  .hero--b .hero-content{margin-inline-start:calc(-1 * clamp(0px, (100vw - var(--wrap)) / 2 - 48px, 56px))}
+}
 .hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-media picture,.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 50%}
 .hero-media img{animation:kenburns 26s var(--ease) both;transform-origin:40% 55%}
