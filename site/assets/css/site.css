@@ -108,8 +108,8 @@ input,select,textarea{font:inherit}
 .mega-side{border-inline-start:1px solid var(--line);padding-inline-start:28px;display:flex;flex-direction:column;justify-content:center;gap:8px}
 .mega-side-k{margin:0;color:var(--accent);font-size:.85rem;letter-spacing:.04em}
 .mega-side-t{margin:0 0 10px;color:var(--ink-2);font-size:.95rem}
-.hdr-cta{display:flex;align-items:center;gap:14px;flex:0 0 auto}
-.hdr-phone{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600;font-size:1.02rem;padding:6px 4px;border-radius:6px}
+.hdr-cta{display:flex;align-items:center;gap:10px;flex:0 0 auto} /* דסקטופ: "לשיחה דיסקרטית" + וואטסאפ (זיו 08/11); אייקון הטלפון מוצג רק מתחת ל-1024 */
+.hdr-phone{display:none;align-items:center;gap:8px;color:var(--ink);font-weight:600;font-size:1.02rem;padding:6px 4px;border-radius:6px}
 .hdr-phone .ic{color:var(--accent2)}
 .hdr-phone:hover{color:var(--accent-light)}
 .burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;border-radius:var(--radius-s);border:1px solid var(--line-2);color:var(--ink)}
@@ -131,11 +131,9 @@ input,select,textarea{font:inherit}
 .hero-sub .wave{display:inline-block;background-image:linear-gradient(100deg,var(--ink) 0%,var(--ink) 44%,var(--accent2) 50%,var(--ink) 56%,var(--ink) 100%);background-size:250% 100%;background-position:0 0;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:textwave 4.6s linear infinite;animation-delay:calc(var(--w,0) * 1.29s)}
 @keyframes textwave{0%{background-position:0 0}42%,100%{background-position:100% 0}} /* הגל עובר מימין לשמאל ב-1.93 שנ' ואז מנוחה; השאלה השנייה מתחילה כשהגל יוצא מהראשונה */
 .hero-lead{font-family:var(--font-body);font-size:clamp(1.08rem,1.5vw,1.26rem);font-weight:400;letter-spacing:0;color:var(--ink-2);line-height:1.6;width:0;min-width:100%;text-wrap:pretty;margin:0 0 30px}
-.hero-btns{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-bottom:34px}
-.hero-formlink{display:inline-flex;align-items:center;gap:8px;color:var(--ink-2);font-weight:500;padding:6px 2px;border-bottom:1px solid transparent;transition:color var(--t),border-color var(--t)}
-.hero-formlink .ic{width:1em;height:1em;transition:transform var(--t)}
-.hero-formlink:hover{color:var(--ink);border-color:var(--line-2)}
-.hero-formlink:hover .ic{transform:translateX(-3px)}
+/* שלושה כפתורי פנייה אחידים (זיו 08/11): אותו גובה, פינות, טיפוגרפיה ואייקון לפני הטקסט, ורוחב שווה. השיחה מלאה, וואטסאפ וטופס זהים במסגרת */
+.hero-btns{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:34px}
+.hero-btns .btn,.phead-btns .btn{flex:1 1 0;min-width:max-content;padding-inline:20px}
 .hero-trust{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px}
 .hero-trust li{display:flex;align-items:center;gap:9px;color:var(--ink-2);font-size:.95rem}
 .hero-trust .ic{color:var(--accent2);width:1.2em;height:1.2em}
@@ -503,7 +501,7 @@ html.a11y-motion .hero-film--auto video{opacity:1}
   .nav{display:none}
   .burger{display:inline-flex}
   .hdr-btn{display:none}
-  .hdr-phone{width:44px;height:44px;justify-content:center;border:1px solid var(--line-2);border-radius:var(--radius-s)}
+  .hdr-phone{display:inline-flex;width:44px;height:44px;justify-content:center;border:1px solid var(--line-2);border-radius:var(--radius-s)}
   .drawer{display:block;position:fixed;inset:var(--hdr) 0 0 0;z-index:490;background:var(--bg);overflow-y:auto;transform:translateY(-8px);opacity:0;transition:opacity var(--t) var(--ease),transform var(--t) var(--ease)}
   .drawer[hidden]{display:none}
   .drawer.open{opacity:1;transform:none}
@@ -575,8 +573,7 @@ html.a11y-motion .hero-film--auto video{opacity:1}
   body{font-size:1rem}
   .hero h1{font-size:min(2.7rem,8.4vw,calc((100vw - var(--gutter)*2) / 11.1));max-width:none} /* הגבלה שלישית: H1 בשורה אחת גם ב-360/320 */
   .hero--b .hero-in,.hero--a .hero-in{padding-block:40px 32px}
-  .hero-btns .btn{flex:1 1 calc(50% - 9px)}
-  .hero-formlink{width:100%;justify-content:center}
+  .hero-btns .btn{flex:1 1 100%}
   .hero-trust{gap:8px 18px}
   .hero-trust li{font-size:.9rem}
   .services-grid{grid-template-columns:1fr}
@@ -587,8 +584,7 @@ html.a11y-motion .hero-film--auto video{opacity:1}
   .lead{padding:20px 18px}
   .ftr-top{grid-template-columns:1fr}
   .ftr-bottom{flex-direction:column}
-  .phead-btns .btn{flex:1 1 calc(50% - 9px)}
-  .phead-btns .hero-formlink{width:100%;justify-content:center}
+  .phead-btns .btn{flex:1 1 100%}
   .closing-btns .btn{flex:1 1 calc(50% - 6px)}
   .step{gap:14px}
   .step-n{flex-basis:38px;height:38px;font-size:1rem}
