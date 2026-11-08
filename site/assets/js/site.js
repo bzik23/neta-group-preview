@@ -75,22 +75,36 @@
     }
   }
 
-  /* ---------- וידאו הירו (אם קיים): טעינה אחרי התוכן, כפתור עצירה, כיבוי בחיבור איטי ---------- */
-  var hv = d.querySelector('.hero-media video');
-  if (hv) {
+  /* ---------- סרטון ההירו "קומה 3" ----------
+     דסקטופ: מתנגן בשקט בחצי השמאלי אחרי טעינת העמוד, עם כפתור עצירה.
+     נייד: הבלוק עובר מתחת לכפתורי הפנייה; פוסטר + כפתור הפעלה (לא נטען עד לחיצה).
+     תנועה מופחתת / "עצירת תנועה" בווידג'ט / חיבור איטי: פוסטר עד הפעלה יזומה. */
+  var film = d.getElementById('hero-film');
+  if (film) {
+    var hv = film.querySelector('video'), hPlay = film.querySelector('.hero-play'), hPause = film.querySelector('.hero-pause');
     var conn = navigator.connection || {};
     var slow = conn.saveData || /2g/.test(conn.effectiveType || '');
-    if (reduced || slow || window.innerWidth < 760) { hv.remove(); var hp0 = d.querySelector('.hero-pause'); if (hp0) hp0.remove(); }
-    else {
-      hv.addEventListener('canplay', function () { hv.classList.add('ready'); }, { once: true });
-      var p = hv.play(); if (p && p.catch) p.catch(function () {});
-      var hp = d.querySelector('.hero-pause');
-      if (hp) hp.addEventListener('click', function () {
-        var paused = hp.getAttribute('aria-pressed') === 'true';
-        if (paused) { hv.play(); hp.setAttribute('aria-pressed', 'false'); hp.setAttribute('aria-label', 'עצירת הווידאו ברקע'); }
-        else { hv.pause(); hp.setAttribute('aria-pressed', 'true'); hp.setAttribute('aria-label', 'הפעלת הווידאו ברקע'); }
-      });
+    var mobile = window.matchMedia('(max-width: 900px)').matches;
+    if (mobile) { var btns = d.querySelector('.hero-btns'); if (btns) btns.insertAdjacentElement('afterend', film); }
+    function motionOff() { return reduced || d.documentElement.classList.contains('a11y-motion'); }
+    function setPausedUI(p) { hPause.setAttribute('aria-pressed', p ? 'true' : 'false'); hPause.setAttribute('aria-label', p ? 'הפעלת הסרטון' : 'עצירת הסרטון'); }
+    function startFilm() {
+      hPlay.hidden = true; hPause.hidden = false;
+      var p = hv.play();
+      if (p && p.catch) p.catch(function () { hPlay.hidden = false; hPause.hidden = true; film.classList.remove('hero-film--auto'); });
     }
+    hv.addEventListener('playing', function () { hv.classList.add('ready'); setPausedUI(false); });
+    hv.addEventListener('pause', function () { setPausedUI(true); });
+    hPlay.addEventListener('click', startFilm);
+    hPause.addEventListener('click', function () { if (hv.paused) hv.play(); else hv.pause(); });
+    d.addEventListener('click', function (e) {
+      if (!e.target.closest || !e.target.closest('[data-a11y="motion"],[data-a11y="reset"]')) return;
+      setTimeout(function () { if (motionOff() && !hv.paused) hv.pause(); }, 0);
+    });
+    if (!mobile && !slow && !motionOff()) {
+      film.classList.add('hero-film--auto');
+      if (d.readyState === 'complete') startFilm(); else window.addEventListener('load', function () { setTimeout(startFilm, 250); });
+    } else { hPlay.hidden = false; }
   }
 
   /* ---------- טופס פנייה ---------- */

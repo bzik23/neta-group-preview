@@ -150,17 +150,27 @@ input,select,textarea{font:inherit}
 .hero--b .hero-in{flex:1 1 auto;display:grid;align-items:center;padding-block:clamp(40px,6vh,72px) clamp(32px,5vh,56px)}
 .hero--b .hero-content{max-width:640px}
 .hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
-.hero-media picture,.hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 50%}
+.hero-media picture,.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 50%}
 .hero-media img{animation:kenburns 26s var(--ease) both;transform-origin:40% 55%}
 @keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.1)}}
-.hero-media video{opacity:0;transition:opacity 1.2s}
-.hero-media video.ready{opacity:1}
 .hero-media::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(to left,rgba(var(--bg-rgb),.94) 0%,rgba(var(--bg-rgb),.86) 26%,rgba(var(--bg-rgb),.55) 50%,rgba(var(--bg-rgb),.22) 74%,rgba(var(--bg-rgb),.3) 100%),
+  linear-gradient(to left,rgba(var(--bg-rgb),.94) 0%,rgba(var(--bg-rgb),.86) 26%,rgba(var(--bg-rgb),.55) 50%,rgba(var(--bg-rgb),.12) 74%,rgba(var(--bg-rgb),0) 100%),
   linear-gradient(to top,var(--bg) 0%,rgba(var(--bg-rgb),.35) 28%,rgba(var(--bg-rgb),0) 58%),
   linear-gradient(to bottom,rgba(var(--bg-rgb),.55),rgba(var(--bg-rgb),0) 22%)}
 .hero-media::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(60% 50% at 88% 18%,rgba(var(--accent-rgb),.24),transparent 70%),radial-gradient(40% 40% at 8% 90%,rgba(var(--accent2-rgb),.12),transparent 70%);mix-blend-mode:screen;pointer-events:none}
-.hero-pause{position:absolute;z-index:3;bottom:18px;inset-inline-end:18px;width:40px;height:40px;border-radius:50%;background:rgba(var(--bg-rgb),.6);border:1px solid var(--line-2);color:var(--ink);display:grid;place-items:center;pointer-events:auto}
+
+/* סרטון "קומה 3": בדסקטופ נטמע בחצי השמאלי של ההירו (שוליים מרוככים במסכה, בלי מסגרת); מעל הרקע, מתחת לתוכן */
+.hero-film{position:absolute;z-index:1;top:0;bottom:var(--rail-h,97px);left:0;width:min(50%,calc(100svh - var(--hdr)));pointer-events:none;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 11%,#000 84%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 9%,#000 94%,transparent 100%);
+  -webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 11%,#000 84%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 9%,#000 94%,transparent 100%);mask-composite:intersect}
+.hero-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;background:var(--bg)}
+.hero-film--auto video{opacity:0;transition:opacity 1.2s}
+.hero-film--auto video.ready{opacity:1}
+.hero-play,.hero-pause{pointer-events:auto;cursor:pointer}
+.hero-play{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--ink);font-weight:600;font-size:1rem;background:linear-gradient(to top,rgba(var(--bg-rgb),.55),rgba(var(--bg-rgb),.08) 50%)}
+.hero-play .ic{width:60px;height:60px;padding:17px 15px 17px 19px;border-radius:50%;background:var(--btn);color:var(--on-accent);box-shadow:var(--shadow);transition:background var(--t),transform var(--t)}
+.hero-play:hover .ic{background:var(--btn-hover);transform:scale(1.05)}
+.hero-pause{position:absolute;z-index:3;bottom:18px;left:18px;width:40px;height:40px;border-radius:50%;background:rgba(var(--bg-rgb),.6);border:1px solid var(--line-2);color:var(--ink);display:grid;place-items:center}
 .hero-pause .ic{width:16px;height:16px}
 .hero-pause .hp-play,.hero-pause[aria-pressed="true"] .hp-pause{display:none}
 .hero-pause[aria-pressed="true"] .hp-play{display:block}
@@ -468,7 +478,7 @@ html.a11y-links a{text-decoration:underline !important}
 html.a11y-readable body,html.a11y-readable h1,html.a11y-readable h2,html.a11y-readable h3,html.a11y-readable .brand-name{font-family:Arial,Helvetica,sans-serif !important;letter-spacing:0}
 html.a11y-motion *,html.a11y-motion *::before,html.a11y-motion *::after{animation:none !important;transition:none !important}
 html.a11y-motion .reveal{opacity:1;transform:none}
-html.a11y-motion .hero-media video{display:none}
+html.a11y-motion .hero-film--auto video{opacity:1}
 
 /* ---------- רספונסיב ---------- */
 @media (max-width:1180px){
@@ -540,6 +550,12 @@ html.a11y-motion .hero-media video{display:none}
   .hero--b .hero-content{max-width:none}
   .hero-media picture,.hero-media img{object-position:50% 50%}
   .hero-media::after{background:linear-gradient(to bottom,rgba(var(--bg-rgb),.58) 0%,rgba(var(--bg-rgb),.74) 45%,var(--bg) 100%)}
+  /* נייד: הסרטון עובר (בסקריפט) מתחת לכפתורי הפנייה כבלוק עם פוסטר וכפתור הפעלה; בלי סקריפט לא מוצג */
+  .hero > .hero-film{display:none}
+  .hero-content .hero-film{display:block;position:relative;width:100%;max-width:560px;aspect-ratio:4/3;max-height:340px;margin:2px 0 28px;border-radius:14px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow);mask-image:none;-webkit-mask-image:none}
+  .hero-content .hero-film video{opacity:1}
+  .hero-play{font-size:.95rem}
+  .hero-play .ic{width:56px;height:56px;padding:16px 14px 16px 18px}
   .hide-m{display:none}
   .hero-media::before{background:radial-gradient(70% 40% at 50% 0%,rgba(var(--accent-rgb),.16),transparent 70%)}
 }
@@ -573,7 +589,7 @@ html.a11y-motion .hero-media video{display:none}
   *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
   .reveal{opacity:1;transform:none}
   .hero-media img{animation:none;transform:none}
-  .hero-media video{display:none}
+  .hero-film--auto video{opacity:1}
 }
 @media print{
   .hdr,.mbar,.a11y,.closing,.hero-media,.svc-aside,.ftr-top{display:none !important}
