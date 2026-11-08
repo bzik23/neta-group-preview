@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-<rect width="64" height="64" rx="14" fill="#090A0C"/>
-<rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#C4A46B" stroke-opacity=".45" stroke-width="1.5"/>
-<text x="32" y="43" text-anchor="middle" font-family="'Frank Ruhl Libre','David',serif" font-weight="700" font-size="34" fill="#F1EEE8">נ</text>
-<rect x="18" y="49" width="28" height="2" rx="1" fill="#C4A46B"/>
+<rect width="64" height="64" rx="14" fill="#0E0F12"/>
+<rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#8B5CF6" stroke-opacity=".55" stroke-width="1.5"/>
+<text x="32" y="43" text-anchor="middle" font-family="'Rubik','Arial',sans-serif" font-weight="700" font-size="34" fill="#F1EEE8">נ</text>
+<rect x="18" y="49" width="28" height="2" rx="1" fill="#2DD4BF"/>
 </svg>
