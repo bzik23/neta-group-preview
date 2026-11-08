@@ -88,6 +88,11 @@ input,select,textarea{font:inherit}
 .brand-name{font-family:var(--font-display);font-weight:700;font-size:1.55rem;letter-spacing:-.01em;color:var(--ink)}
 .brand-tag{font-size:.68rem;letter-spacing:.14em;color:var(--accent2);font-weight:600}
 .brand:hover .brand-name{color:#fff}
+/* האדר: וורדמרק + צללית הבלשית משמאל (ב-RTL האייקון אחרי הטקסט ב-DOM). גובה האייקון = גובה שתי שורות הכיתוב */
+.brand--mark{flex-direction:row;align-items:center;gap:10px}
+.brand-txt{display:flex;flex-direction:column;gap:5px}
+.brand-mark{height:42px;width:auto;aspect-ratio:881/1037;flex:0 0 auto;color:var(--accent2);transition:transform var(--t) var(--ease)}
+.brand:hover .brand-mark{transform:translateY(-1px) rotate(-3deg)}
 .nav{flex:1 1 auto;display:flex;justify-content:center}
 .nav-list{list-style:none;margin:0;padding:0;display:flex;gap:2px}
 .nav-item{position:relative}
