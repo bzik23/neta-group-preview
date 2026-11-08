@@ -42,7 +42,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;paddin
 input,select,textarea{font:inherit}
 ::selection{background:rgba(var(--accent-rgb),.35);color:#fff}
 :focus-visible{outline:2px solid var(--accent-light);outline-offset:3px;border-radius:4px}
-.nb{white-space:nowrap}
+.nb{white-space:nowrap} /* ראו גם span.nb בסוף הקובץ */
 .muted{color:var(--ink-3);font-weight:400}
 .fine{font-size:.9rem;color:var(--ink-3)}
 .ic{width:1.25em;height:1.25em;flex:0 0 auto}
@@ -123,10 +123,14 @@ input,select,textarea{font:inherit}
 .hero-in{position:relative;z-index:2}
 .hero-kicker{display:flex;align-items:center;gap:14px;color:var(--accent2);font-weight:500;font-size:.9rem;letter-spacing:.06em;margin:0 0 20px}
 .hero-kicker-line{width:36px;height:2px;border-radius:2px;background:var(--accent2)}
-.hero h1{font-size:clamp(2.35rem,5.1vw,4.1rem);line-height:1.08;margin-bottom:.45em;max-width:14ch;text-wrap:balance}
+.hero h1{font-size:clamp(2.35rem,5.1vw,3.5rem);line-height:1.08;margin-bottom:.45em;text-wrap:balance} /* 3.5rem: "נטע גרופ | משרד חקירות" (10.8em) בשורה אחת בעמודה של 640px, עם מרווח */
 .hero h1 .h1-sep{color:var(--accent2);font-weight:300;margin:0 .08em}
-.hero-sub{font-size:clamp(1.25rem,1.9vw,1.6rem);font-weight:500;line-height:1.35;letter-spacing:0;color:var(--ink);max-width:32ch;margin:0 0 .7em}
-.hero-lead{font-family:var(--font-body);font-size:clamp(1.08rem,1.5vw,1.26rem);font-weight:400;letter-spacing:0;color:var(--ink-2);line-height:1.6;max-width:56ch;margin:0 0 30px}
+/* H2 + H3 באותו רוחב: העטיפה מתכווצת לרוחב ה-H2, וה-H3 (width:0 + min-width:100%) לא משפיע על הרוחב אלא ממלא אותו */
+.hero-copy{width:fit-content;max-width:100%}
+.hero-sub{font-size:clamp(1.25rem,1.9vw,1.6rem);font-weight:500;line-height:1.35;letter-spacing:0;color:var(--ink);margin:0 0 .7em}
+.hero-sub .wave{display:inline-block;background-image:linear-gradient(100deg,var(--ink) 0%,var(--ink) 44%,var(--accent2) 50%,var(--ink) 56%,var(--ink) 100%);background-size:250% 100%;background-position:0 0;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:textwave 4.6s linear infinite;animation-delay:calc(var(--w,0) * 1.29s)}
+@keyframes textwave{0%{background-position:0 0}42%,100%{background-position:100% 0}} /* הגל עובר מימין לשמאל ב-1.93 שנ' ואז מנוחה; השאלה השנייה מתחילה כשהגל יוצא מהראשונה */
+.hero-lead{font-family:var(--font-body);font-size:clamp(1.08rem,1.5vw,1.26rem);font-weight:400;letter-spacing:0;color:var(--ink-2);line-height:1.6;width:0;min-width:100%;text-wrap:pretty;margin:0 0 30px}
 .hero-btns{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-bottom:34px}
 .hero-formlink{display:inline-flex;align-items:center;gap:8px;color:var(--ink-2);font-weight:500;padding:6px 2px;border-bottom:1px solid transparent;transition:color var(--t),border-color var(--t)}
 .hero-formlink .ic{width:1em;height:1em;transition:transform var(--t)}
@@ -141,7 +145,7 @@ input,select,textarea{font:inherit}
 .hero-rail-item:first-child{border-inline-start:0;padding-inline-start:4px}
 .hero-rail-item:hover{background:rgba(var(--ink-rgb),.05);color:var(--ink)}
 .hero-rail-item > .ic{width:28px;height:28px;color:var(--accent2);stroke-width:1.4}
-.hero-rail-item span{display:flex;flex-direction:column;gap:2px;flex:1 1 auto;min-width:0}
+.hero-rail-item > span{display:flex;flex-direction:column;gap:2px;flex:1 1 auto;min-width:0}
 .hero-rail-item strong{font-family:var(--font-display);font-size:1.12rem;font-weight:700}
 .hero-rail-item em{font-style:normal;color:var(--ink-3);font-size:.9rem}
 .hero-rail-arrow{color:var(--accent-light);opacity:0;transform:translateX(6px);transition:opacity var(--t),transform var(--t)}
@@ -563,7 +567,7 @@ html.a11y-motion .hero-film--auto video{opacity:1}
 }
 @media (max-width:640px){
   body{font-size:1rem}
-  .hero h1{font-size:clamp(2.05rem,8.4vw,2.7rem);max-width:none}
+  .hero h1{font-size:min(2.7rem,8.4vw,calc((100vw - var(--gutter)*2) / 11.1));max-width:none} /* הגבלה שלישית: H1 בשורה אחת גם ב-360/320 */
   .hero--b .hero-in,.hero--a .hero-in{padding-block:40px 32px}
   .hero-btns .btn{flex:1 1 calc(50% - 9px)}
   .hero-formlink{width:100%;justify-content:center}
@@ -584,6 +588,11 @@ html.a11y-motion .hero-film--auto video{opacity:1}
   .step-n{flex-basis:38px;height:38px;font-size:1rem}
   .mega{display:none}
 }
+
+/* ---------- קיצורים ב-nowrap ---------- */
+/* ה-.nb מוזרק אוטומטית בבילד סביב קיצורים (שב"כ, עו"ד, הוצל"פ) בכל טקסט גלוי, כולל בתוך אלמנטים שיש להם כללי "span" צאצא
+   (למשל .trust-item span). הכלל יושב אחרי כל כללי ה-span בספציפיות שווה כדי שהקיצור יישאר אינליין ושקוף לעיצוב של ההורה. */
+span.nb{display:inline;font:inherit;color:inherit;letter-spacing:inherit;line-height:inherit}
 
 /* ---------- תנועה מופחתת ---------- */
 @media (prefers-reduced-motion:reduce){
