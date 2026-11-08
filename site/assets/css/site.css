@@ -341,8 +341,9 @@ input,select,textarea{font:inherit}
 .prose h2{margin-top:1.8em;font-size:clamp(1.5rem,2.4vw,2rem)}
 .prose h3{margin-top:1.5em}
 .prose > :first-child{margin-top:0}
-.prose a{border-bottom:1px solid rgba(var(--brass-rgb),.4)}
-.prose a:hover{border-color:var(--brass)}
+/* קישורים בתוך טקסט רץ: קו תחתון, לא צבע בלבד (WCAG 1.4.1) */
+.prose a,.faq-a a,.aud a,.step a,.phead-box a,.lead-sub a,.lead-note a,.field-consent a,.fine a,.about-txt a,.guide-note a,.ftr-law a,.lic-s a,.closing-list a,.about-facts a,.ftr-about a,.phead-intro a,.section-sub a,.lead-p a{text-decoration:underline;text-decoration-color:rgba(var(--brass-rgb),.55);text-decoration-thickness:1px;text-underline-offset:.18em;transition:text-decoration-color var(--t)}
+.prose a:hover,.faq-a a:hover,.aud a:hover{text-decoration-color:var(--brass)}
 .prose strong{color:var(--ink)}
 .prose ul li,.prose ol li{margin-bottom:.4em}
 .prose blockquote{margin:1.5em 0;padding:16px 20px;border-inline-start:3px solid var(--brass);background:var(--surface);border-radius:var(--radius-s);color:var(--ink)}
