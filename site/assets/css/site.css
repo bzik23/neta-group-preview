@@ -259,6 +259,7 @@ input,select,textarea{font:inherit}
 .office-t{margin:0 0 .55em;font-size:clamp(2rem,4vw,3.1rem);line-height:1.15;color:var(--ink)}
 .office-t::after{content:"";display:block;width:56px;height:2px;margin:.42em auto 0;border-radius:2px;background:linear-gradient(to left,var(--accent3),rgba(var(--accent3-rgb),.35))}
 .office-name{color:var(--accent3)}
+.office-s strong{font-weight:700;color:#fff;background:linear-gradient(rgba(var(--accent3-rgb),.75),rgba(var(--accent3-rgb),.75)) no-repeat 0 100%/100% 2px;padding-bottom:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .office-s{margin:0;color:var(--ink);font-family:var(--font-display);font-weight:500;font-size:clamp(1.15rem,1.75vw,1.5rem);line-height:1.7;letter-spacing:-.005em;text-wrap:pretty}
 .office + .paths{padding-top:clamp(48px,6vw,80px)}
 
