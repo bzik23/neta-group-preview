@@ -435,6 +435,8 @@ input,select,textarea{font:inherit}
 .areas-plain{color:var(--ink-2)}
 .areas-abroad{display:flex;align-items:center;gap:10px;margin:16px 0 0;color:var(--accent3);font-family:var(--font-display);font-weight:600;font-size:clamp(1.05rem,1.5vw,1.25rem)}
 .areas-abroad .ic{width:22px;height:22px;flex:0 0 auto}
+.areas-abroad a{color:inherit;text-decoration:underline;text-decoration-color:rgba(var(--accent3-rgb),.45);text-underline-offset:.22em}
+.areas-abroad a:hover{text-decoration-color:var(--accent3)}
 /* עמוד הבית: אזורים כרשימה טיפוגרפית בשלוש עמודות */
 .areas-type{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(24px,4vw,56px)}
 .areas-type li{border-bottom:1px solid var(--line)}
