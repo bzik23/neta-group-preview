@@ -689,6 +689,8 @@ html.a11y-motion .hero-film--auto video{opacity:1}
   .scat:hover .scat-bigic,.scat:focus-within .scat-bigic{transform:none;opacity:.12}
   .scat-more,.scat:hover .scat-more,.scat:focus-within .scat-more{width:auto;max-height:none;opacity:1}
   .scat-go{display:none}
+  .scat-t a,.scat-links a,.scat-cta{min-height:44px;display:flex;align-items:center} /* יעדי מגע בנייד */
+  .scat-links{gap:0}
   .sindex li:nth-last-child(2){border-bottom:0}
   .how-top{grid-template-columns:minmax(0,1fr);align-items:start}
   .tline{grid-template-columns:minmax(0,1fr);gap:0}
