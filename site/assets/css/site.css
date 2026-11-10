@@ -428,7 +428,7 @@ input,select,textarea{font:inherit}
 .areas-type a:hover .ic{transform:translateX(-4px)}
 
 /* ---------- שאלות ---------- */
-.faq-list{max-width:820px;display:grid;gap:8px}
+.faq-list{max-width:none;display:grid;gap:8px}
 .faq-list--inline{max-width:none}
 .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-s);transition:border-color var(--t)}
 .faq-item[open]{border-color:var(--line-accent)}
@@ -501,7 +501,7 @@ input,select,textarea{font:inherit}
 /* ---------- עמוד שירות ---------- */
 .svc-grid,.guide-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(32px,5vw,72px);padding-block:clamp(40px,6vw,72px)}
 .svc-sticky{position:sticky;top:calc(var(--hdr) + 20px);display:grid;gap:18px}
-.prose{max-width:70ch}
+.prose{max-width:none} /* הטקסט ממלא את העמודה (זיו 10/11: לא להשאיר ריק בצד) */
 .prose--wide{max-width:none}
 .prose--narrow{max-width:760px}
 .prose p,.prose li{color:var(--ink-2);font-size:1.1rem}
@@ -519,6 +519,25 @@ input,select,textarea{font:inherit}
 .prose th,.prose td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:start;vertical-align:top}
 .prose th{color:var(--accent);font-weight:600}
 .prose hr{border:0;border-top:1px solid var(--line);margin:2em 0}
+/* ---------- נגיעות צבע בעמודי תוכן (זיו 10/11): סגול->נחושת, במינון ---------- */
+.svc-main .prose h2,.guide-main .prose h2,.hub-intro .prose h2,.blk > h2{position:relative;padding-bottom:.42em}
+.svc-main .prose h2::after,.guide-main .prose h2::after,.hub-intro .prose h2::after,.blk > h2::after{content:"";position:absolute;inset-inline-start:0;bottom:0;width:44px;height:3px;border-radius:3px;background:linear-gradient(to left,var(--accent),var(--accent3))}
+.aud{position:relative;overflow:hidden;--c:var(--accent-rgb)}
+.aud:nth-child(4n+2){--c:var(--accent3-rgb)}
+.aud:nth-child(4n+3){--c:var(--accent2-rgb)}
+.aud::before{content:"";position:absolute;inset-inline:0;top:0;height:3px;background:rgb(var(--c));opacity:.85}
+.aud{background:linear-gradient(180deg,rgba(var(--c),.07),transparent 60%),var(--surface)}
+.steps .step-n{background:radial-gradient(circle at 50% 35%,rgba(var(--accent-rgb),.28),rgba(var(--accent-rgb),.1) 70%);border-color:rgba(var(--accent-rgb),.65);color:var(--accent-light)}
+.steps .step:last-child .step-n{border-color:rgba(var(--accent3-rgb),.7);color:var(--accent3);background:radial-gradient(circle at 50% 35%,rgba(var(--accent3-rgb),.25),rgba(var(--accent3-rgb),.08) 70%)}
+.svc-main .checks{padding:20px 22px;border-radius:var(--radius-s);background:linear-gradient(to left,rgba(var(--accent2-rgb),.08),transparent 70%),var(--surface);border:1px solid rgba(var(--accent2-rgb),.28)}
+.blk--note{border-color:rgba(var(--accent3-rgb),.35);background:linear-gradient(to left,rgba(var(--accent3-rgb),.08),transparent 65%),var(--surface)}
+.blk--note > h2{color:var(--accent3)}
+.blk--note > h2::after{display:none}
+.related-list a .ic{color:var(--accent3);transition:transform var(--t)}
+.related-list a:hover{border-color:rgba(var(--accent3-rgb),.45)}
+.related-list a:hover .ic{transform:translateX(-4px)}
+.phead-box{border-color:rgba(var(--accent3-rgb),.35)}
+.phead-box-k{color:var(--accent3)}
 .blk{margin-top:clamp(36px,5vw,56px);padding-top:clamp(28px,4vw,40px);border-top:1px solid var(--line)}
 .blk > h2{font-size:clamp(1.5rem,2.4vw,2rem);margin-bottom:.8em}
 .blk--note{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;margin-top:40px}
@@ -587,7 +606,8 @@ input,select,textarea{font:inherit}
 .lic-card .law{position:relative}
 
 /* hub */
-.hub-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.6fr);gap:clamp(28px,5vw,64px);align-items:start}
+.hub-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(28px,5vw,64px);align-items:start}
+.hub-aside{align-self:stretch}
 .hub-intro{padding-block:clamp(40px,5vw,64px)}
 
 /* guide */
