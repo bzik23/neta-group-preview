@@ -235,11 +235,19 @@ input,select,textarea{font:inherit}
 
 /* ---------- רצועת אמון ---------- */
 .trust{border-block:1px solid var(--line);background:var(--bg-2)}
+.trust-head{padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(8px,1.5vw,16px)}
+.trust-head h2{margin:0}
 .trust-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.trust-item{display:flex;flex-direction:column;gap:6px;padding:28px 22px;border-inline-start:1px solid var(--line)}
+.trust-item{--c:var(--accent2-rgb);position:relative;display:flex;flex-direction:column;gap:6px;padding:28px 22px;border-inline-start:1px solid var(--line);transition:background var(--t) var(--ease)}
+.trust-item--accent{--c:var(--accent-rgb)}
+.trust-item--accent3{--c:var(--accent3-rgb)}
+.trust-item::before{content:"";position:absolute;top:-1px;inset-inline-start:22px;width:36px;height:2px;border-radius:2px;background:rgb(var(--c));transition:width .4s var(--ease)} /* פס צבע קצר; מתארך בריחוף */
+.trust-item:first-child::before{inset-inline-start:0}
+.trust-item:hover{background:linear-gradient(180deg,rgba(var(--c),.06),transparent 75%)}
+.trust-item:hover::before{width:72px}
 .trust-item:first-child{border-inline-start:0;padding-inline-start:0}
-.trust-ic{color:var(--accent2);width:26px;height:26px;margin-bottom:6px}
-.trust-ic .ic{width:26px;height:26px;stroke-width:1.4}
+.trust-ic{color:rgb(var(--c));width:42px;height:42px;margin-bottom:8px;display:grid;place-items:center;border-radius:10px;background:rgba(var(--c),.1);border:1px solid rgba(var(--c),.35)}
+.trust-ic .ic{width:21px;height:21px;stroke-width:1.5}
 .trust-item strong{font-family:var(--font-display);font-size:1.15rem;line-height:1.25}
 .trust-item span{color:var(--ink-2);font-size:.95rem;line-height:1.55}
 
@@ -728,6 +736,8 @@ html.a11y-motion .hero-film--auto video{opacity:1}
   .trust-item{border-inline-start:0;padding:20px 0;border-top:1px solid var(--line)}
   .trust-item:nth-child(-n+2){border-top:0}
   .trust-item:nth-child(2n){padding-inline-start:18px;border-inline-start:1px solid var(--line)}
+  .trust-item:nth-child(2n)::before{inset-inline-start:18px}
+  .trust-item:nth-child(2n+1)::before{inset-inline-start:0}
   .services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .sindex{grid-template-columns:minmax(0,1fr)}
   .scats{flex-direction:column;height:auto;gap:12px}
@@ -806,6 +816,7 @@ html.a11y-motion .hero-film--auto video{opacity:1}
   .aud-grid{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:1fr}
   .trust-item,.trust-item:nth-child(2n){border-inline-start:0;padding-inline-start:0}
+  .trust-item::before,.trust-item:nth-child(2n)::before{inset-inline-start:0}
   .trust-item:nth-child(2){border-top:1px solid var(--line)}
   .lead{padding:20px 18px}
   .ftr-top{grid-template-columns:1fr}
