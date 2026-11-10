@@ -305,8 +305,10 @@ input,select,textarea{font:inherit}
 .scat-t a{color:var(--ink)}
 .scat-t a::after{content:"";position:absolute;inset:0;z-index:1} /* כל הכרטיסייה לחיצה; קישורים פנימיים מעליה */
 .scat-tags{margin:8px 0 0;color:var(--ink-3);font-size:.9rem;line-height:1.45}
-.scat-more{width:min(360px,30vw);max-height:0;opacity:0;overflow:hidden;transition:max-height .5s var(--ease),opacity .25s var(--ease)}
-.scat:hover .scat-more,.scat:focus-within .scat-more{max-height:360px;opacity:1;transition:max-height .6s var(--ease) .12s,opacity .4s var(--ease) .28s}
+/* פתיחה ב-grid-template-rows 0fr->1fr (לא max-height) */
+.scat-more{width:min(360px,30vw);display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .5s var(--ease),opacity .25s var(--ease)}
+.scat-more-in{min-height:0;overflow:hidden}
+.scat:hover .scat-more,.scat:focus-within .scat-more{grid-template-rows:1fr;opacity:1;transition:grid-template-rows .6s var(--ease) .12s,opacity .4s var(--ease) .28s}
 .scat-s{margin:14px 0 10px;color:var(--ink-2);font-size:.98rem;line-height:1.6}
 .scat-links{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:2px;position:relative;z-index:2}
 .scat-links a{display:flex;align-items:center;gap:8px;padding:3px 0;color:var(--ink);font-size:.95rem}
@@ -687,7 +689,7 @@ html.a11y-motion .hero-film--auto video{opacity:1}
   .scat-n{top:18px;inset-inline-start:auto;inset-inline-end:20px}
   .scat-bigic{top:auto;bottom:-14%;left:auto;right:auto;inset-inline-end:-6%;width:150px;transform:none;opacity:.12}
   .scat:hover .scat-bigic,.scat:focus-within .scat-bigic{transform:none;opacity:.12}
-  .scat-more,.scat:hover .scat-more,.scat:focus-within .scat-more{width:auto;max-height:none;opacity:1}
+  .scat-more,.scat:hover .scat-more,.scat:focus-within .scat-more{width:auto;grid-template-rows:1fr;opacity:1}
   .scat-go{display:none}
   .scat-t a,.scat-links a,.scat-cta{min-height:44px;display:flex;align-items:center} /* יעדי מגע בנייד */
   .scat-links{gap:0}
