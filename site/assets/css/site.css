@@ -83,7 +83,7 @@ input,select,textarea{font:inherit}
 
 /* ---------- האדר ---------- */
 .hdr{position:sticky;top:0;z-index:500;background:rgba(var(--bg-rgb),.78);backdrop-filter:blur(16px) saturate(130%);-webkit-backdrop-filter:blur(16px) saturate(130%);border-bottom:1px solid var(--line)}
-.hdr-in{height:var(--hdr);display:flex;align-items:center;gap:28px}
+.hdr-in{position:relative;height:var(--hdr);display:flex;align-items:center;gap:28px}
 .brand{display:flex;flex-direction:column;line-height:1;color:var(--ink);gap:5px;flex:0 0 auto}
 .brand-name{font-family:var(--font-display);font-weight:700;font-size:1.55rem;letter-spacing:-.01em;color:var(--ink)}
 .brand-tag{font-size:.68rem;letter-spacing:.14em;color:var(--accent2);font-weight:600}
@@ -96,21 +96,23 @@ input,select,textarea{font:inherit}
 .nav{flex:1 1 auto;display:flex;justify-content:center}
 .nav-list{list-style:none;margin:0;padding:0;display:flex;gap:2px}
 .nav-item{position:relative}
+.nav-item.has-mega{position:static} /* המגה ממוקם ביחס לשורת ההאדר, לא לכפתור */
 .nav-link{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:var(--radius-s);color:var(--ink-2);font-weight:500;font-size:.98rem;transition:color var(--t),background var(--t)}
 .nav-link:hover,.nav-link[aria-expanded="true"],.nav-link[aria-current="page"]{color:var(--ink);background:rgba(var(--ink-rgb),.06)}
 .nav-link[aria-current="page"]{color:var(--accent-light)}
 .nav-chev{width:.9em;height:.9em;transition:transform var(--t)}
 .nav-link[aria-expanded="true"] .nav-chev{transform:rotate(180deg)}
-.mega{position:absolute;top:calc(100% + 10px);inset-inline-start:50%;transform:translateX(50%) translateY(6px);width:min(1120px,calc(100vw - 32px));background:var(--surface);border:1px solid var(--line-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 32px;opacity:0;visibility:hidden;transition:opacity var(--t) var(--ease),transform var(--t) var(--ease),visibility var(--t)}
-.mega.open{opacity:1;visibility:visible;transform:translateX(50%) translateY(0)}
-.mega-in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 220px;gap:28px;width:100%}
+/* מימין: קו הלוגו (תחילת ה-wrap). משמאל: אמצע כפתורי השיחה/וואטסאפ (--mega-end מחושב ב-site.js; 0 = קצה ה-wrap) */
+.mega{position:absolute;top:calc(100% + 10px);inset-inline-start:0;inset-inline-end:var(--mega-end,0px);transform:translateY(6px);background:var(--surface);border:1px solid var(--line-2);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 32px;opacity:0;visibility:hidden;transition:opacity var(--t) var(--ease),transform var(--t) var(--ease),visibility var(--t)}
+.mega.open{opacity:1;visibility:visible;transform:translateY(0)}
+.mega-in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 196px;gap:24px;width:100%}
 .mega-col ul{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:4px}
 .mega-col li a{display:block;padding:7px 10px;margin-inline:-10px;border-radius:6px;color:var(--ink-2);font-size:.95rem;transition:background var(--t),color var(--t)}
 .mega-col li a:hover,.mega-col li a[aria-current="page"]{background:rgba(var(--ink-rgb),.06);color:var(--ink)}
-.mega-title{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--accent-light);padding-bottom:10px;border-bottom:1px solid var(--line);width:100%}
+.mega-title{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--accent-light);white-space:nowrap;padding-bottom:10px;border-bottom:1px solid var(--line);width:100%}
 .mega-title .ic{width:1em;height:1em;transition:transform var(--t)}
 .mega-title:hover .ic{transform:translateX(-3px)}
-.mega-side{border-inline-start:1px solid var(--line);padding-inline-start:28px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.mega-side{border-inline-start:1px solid var(--line);padding-inline-start:24px;display:flex;flex-direction:column;justify-content:center;gap:8px}
 .mega-side-k{margin:0;color:var(--accent);font-size:.85rem;letter-spacing:.04em}
 .mega-side-t{margin:0 0 10px;color:var(--ink-2);font-size:.95rem}
 .hdr-cta{display:flex;align-items:center;gap:10px;flex:0 0 auto} /* דסקטופ: "לשיחה דיסקרטית" + וואטסאפ (זיו 08/11); אייקון הטלפון מוצג רק מתחת ל-1024 */

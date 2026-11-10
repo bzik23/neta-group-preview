@@ -39,7 +39,19 @@
   /* ---------- ניווט: מגה-תפריט + מגירה ---------- */
   var navBtn = d.querySelector('.nav-btn'), mega = d.getElementById('mega'), megaItem = navBtn && navBtn.closest('.has-mega');
   var hoverTimer;
-  function openMega() { if (!mega) return; mega.classList.add('open'); navBtn.setAttribute('aria-expanded', 'true'); }
+  /* המגה נפרש מקו הלוגו ועד אמצע כפתורי הפנייה בהאדר (בקשת זיו 10/11) */
+  var hdrIn = d.querySelector('.hdr-in'), hdrCta = d.querySelector('.hdr-cta');
+  function placeMega() {
+    if (!hdrIn || !hdrCta || !hdrCta.offsetWidth) return;
+    var a = hdrIn.getBoundingClientRect(), c = hdrCta.getBoundingClientRect();
+    var end = (c.left + c.width / 2) - a.left; // ב-RTL הכפתורים בצד שמאל של השורה
+    hdrIn.style.setProperty('--mega-end', Math.max(0, Math.round(end)) + 'px');
+  }
+  window.addEventListener('resize', placeMega);
+  // רוחב הכפתורים משתנה כשהפונט נטען (גיליון הפונטים נטען באיחור, preload+onload)
+  if (d.fonts) { if (d.fonts.ready) d.fonts.ready.then(placeMega); if (d.fonts.addEventListener) d.fonts.addEventListener('loadingdone', placeMega); }
+  window.addEventListener('load', placeMega);
+  function openMega() { if (!mega) return; placeMega(); mega.classList.add('open'); navBtn.setAttribute('aria-expanded', 'true'); }
   function closeMega() { if (!mega) return; mega.classList.remove('open'); navBtn.setAttribute('aria-expanded', 'false'); }
   if (navBtn) {
     navBtn.addEventListener('click', function () { mega.classList.contains('open') ? closeMega() : openMega(); });
