@@ -75,6 +75,53 @@
     }
   }
 
+  /* ---------- יציאה מהירה: כפתור, או Esc פעמיים תוך שנייה (כשאין תפריט פתוח) ---------- */
+  function quickExit() {
+    try { d.title = 'Google'; body.style.visibility = 'hidden'; } catch (e) {}
+    location.replace('https://www.google.com/');
+  }
+  var qx = d.querySelector('[data-qexit]');
+  if (qx) {
+    qx.addEventListener('click', function (e) { e.preventDefault(); quickExit(); });
+    var lastEsc = 0;
+    d.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var menuOpen = (mega && mega.classList.contains('open')) || (burger && burger.getAttribute('aria-expanded') === 'true');
+      if (menuOpen) { lastEsc = 0; return; }
+      var now = Date.now();
+      if (now - lastEsc < 1000) quickExit(); else lastEsc = now;
+    });
+  }
+
+  /* ---------- תוכן עניינים: הדגשת הסעיף שנקרא כעת ---------- */
+  var tocD = d.querySelector('.toc-d');
+  if (tocD) {
+    var mq = window.matchMedia('(max-width: 1024px)');
+    var syncToc = function () { tocD.open = !mq.matches; };
+    syncToc();
+    if (mq.addEventListener) mq.addEventListener('change', syncToc);
+    tocD.addEventListener('click', function (e) { if (e.target.closest('a') && mq.matches) tocD.open = false; });
+    tocD.querySelector('summary').addEventListener('click', function (e) { if (!mq.matches) e.preventDefault(); });
+  }
+  var tocLinks = d.querySelectorAll('.toc a[href^="#"]');
+  if (tocLinks.length) {
+    var heads = [], byId = {};
+    tocLinks.forEach(function (a) {
+      var h = d.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+      if (h) { heads.push(h); byId[h.id] = a; }
+    });
+    var setCur = function (id) { tocLinks.forEach(function (a) { a.removeAttribute('aria-current'); }); if (byId[id]) byId[id].setAttribute('aria-current', 'true'); };
+    var tick = false;
+    var spy = function () {
+      tick = false;
+      var cur = null, lim = window.innerHeight * 0.35;
+      heads.forEach(function (h) { if (h.getBoundingClientRect().top < lim) cur = h.id; });
+      setCur(cur || (heads[0] && heads[0].id));
+    };
+    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(spy); } }, { passive: true });
+    spy();
+  }
+
   /* ---------- סרטון ההירו "קומה 3" ----------
      דסקטופ: מתנגן בשקט בחצי השמאלי אחרי טעינת העמוד, עם כפתור עצירה.
      נייד: הבלוק עובר מתחת לכפתורי הפנייה; פוסטר + כפתור הפעלה (לא נטען עד לחיצה).
