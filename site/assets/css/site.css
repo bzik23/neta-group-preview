@@ -11,6 +11,7 @@
   --accent:#8B5CF6; --accent-light:#B49CFF; --accent-deep:#6D28D9; --accent-rgb:139,92,246; --on-accent:#FFFFFF;
   --btn:#7C3AED; --btn-hover:#8B5CF6;
   --accent2:#2DD4BF; --accent2-rgb:45,212,191;
+  --accent3:#FF8A3D; --accent3-rgb:255,138,61; /* כתום חם: נגיעת צבע לכותרות נבחרות (זיו 10/11) */
   --line-accent:rgba(139,92,246,.42);
   --ok:#34D399; --err:#FB7185;
   --font-body:'Assistant','Heebo',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
@@ -252,7 +253,7 @@ input,select,textarea{font:inherit}
 .scard:hover .scard-more .ic{transform:translateX(-4px)}
 /* עמוד הבית: "על המשרד" מתחת לרצועת התחומים */
 .office{padding-block:clamp(56px,7vw,96px) 0;text-align:center} /* ממורכז (בקשת זיו 10/11) */
-.office-t{margin:0 0 .55em;font-size:clamp(2rem,4vw,3.1rem);line-height:1.15;color:var(--ink)}
+.office-t{margin:0 0 .55em;font-size:clamp(2rem,4vw,3.1rem);line-height:1.15;color:var(--accent3)}
 .office-s{margin:0;color:var(--ink);font-family:var(--font-display);font-weight:500;font-size:clamp(1.15rem,1.75vw,1.5rem);line-height:1.7;letter-spacing:-.005em;text-wrap:pretty}
 .office + .paths{padding-top:clamp(48px,6vw,80px)}
 
