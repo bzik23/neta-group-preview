@@ -190,7 +190,7 @@
 
   /* ---------- סרטון ההירו "קומה 3" ----------
      דסקטופ: מתנגן בשקט בחצי השמאלי אחרי טעינת העמוד, עם כפתור עצירה.
-     נייד: הבלוק עובר מתחת לכפתורי הפנייה; פוסטר + כפתור הפעלה (לא נטען עד לחיצה).
+     נייד: הבלוק עובר מתחת לכפתורי הפנייה (מוסתרים ב-640 ומטה) ומתנגן מיד בשקט.
      תנועה מופחתת / "עצירת תנועה" בווידג'ט / חיבור איטי: פוסטר עד הפעלה יזומה. */
   var film = d.getElementById('hero-film');
   if (film) {
@@ -214,10 +214,45 @@
       if (!e.target.closest || !e.target.closest('[data-a11y="motion"],[data-a11y="reset"]')) return;
       setTimeout(function () { if (motionOff() && !hv.paused) hv.pause(); }, 0);
     });
-    if (!mobile && !slow && !motionOff()) {
+    /* נייד: מתנגן (בשקט) מיד עם הכניסה, בלי לחכות ל-load (זיו 11/11). דסקטופ: אחרי load כמו קודם */
+    if (!slow && !motionOff()) {
       film.classList.add('hero-film--auto');
-      if (d.readyState === 'complete') startFilm(); else window.addEventListener('load', function () { setTimeout(startFilm, 250); });
+      if (mobile || d.readyState === 'complete') startFilm(); else window.addEventListener('load', function () { setTimeout(startFilm, 250); });
     } else { hPlay.hidden = false; }
+  }
+
+  /* ---------- פס השירותים בהירו: סליידר אוטומטי בנייד (כל 1.5 שנ', זיו 11/11) ----------
+     רק עד 640px, רק כשהפס בתצוגה והלשונית גלויה; נגיעה/גלילה ידנית עוצרת ל-5 שנ'; בתנועה מופחתת אין החלפה אוטומטית. */
+  function autoSlide(track, every, vis) {
+    var items = [].slice.call(track.children), idx = 0, visible = false, hold = 0;
+    var dots = d.createElement('div'); dots.className = 'slide-dots'; dots.setAttribute('aria-hidden', 'true');
+    items.forEach(function () { dots.appendChild(d.createElement('i')); });
+    track.insertAdjacentElement('afterend', dots);
+    var pad = parseFloat(getComputedStyle(track).paddingRight) || 0;
+    function mark(i) { idx = i; [].forEach.call(dots.children, function (dt, k) { dt.classList.toggle('on', k === i); }); }
+    function go(i) { // RTL: מיישרים את הקצה הימני של הכרטיס לקצה הימני של הפס (יחסי, עובד בכל מוסכמת scrollLeft)
+      var delta = items[i].getBoundingClientRect().right - (track.getBoundingClientRect().right - pad);
+      track.scrollTo({ left: track.scrollLeft + delta, behavior: 'smooth' }); mark(i);
+    }
+    var sync; track.addEventListener('scroll', function () {
+      clearTimeout(sync); sync = setTimeout(function () {
+        var edge = track.getBoundingClientRect().right - pad, best = 0, bd = 1e9;
+        items.forEach(function (it, k) { var dd = Math.abs(it.getBoundingClientRect().right - edge); if (dd < bd) { bd = dd; best = k; } });
+        mark(best);
+      }, 90);
+    }, { passive: true });
+    ['touchstart', 'pointerdown', 'focusin'].forEach(function (ev) { track.addEventListener(ev, function () { hold = Date.now() + 5000; }, { passive: true }); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }, { threshold: vis }).observe(track);
+    mark(0);
+    if (!reduced) setInterval(function () {
+      if (!visible || d.hidden || Date.now() < hold || d.documentElement.classList.contains('a11y-motion')) return;
+      go((idx + 1) % items.length);
+    }, every);
+  }
+  if (window.matchMedia('(max-width: 640px)').matches) {
+    var railT = d.querySelector('.hero-rail-in'); if (railT) autoSlide(railT, 1500, 0.6);
+    var scatsT = d.querySelector('.scats'); if (scatsT) autoSlide(scatsT, 1500, 0.35); /* קטגוריות השירותים (זיו 11/11) */
+    var pathsT = d.querySelector('.paths-grid--slide'); if (pathsT) autoSlide(pathsT, 1500, 0.5); /* לאן פונים (זיו 11/11) */
   }
 
   /* ---------- טופס פנייה ---------- */
