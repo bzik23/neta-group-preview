@@ -73,6 +73,8 @@
     burger.addEventListener('click', function () { setDrawer(burger.getAttribute('aria-expanded') !== 'true'); });
     d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') { setDrawer(false); burger.focus(); } });
     window.addEventListener('resize', function () { if (window.innerWidth > 1024 && burger.getAttribute('aria-expanded') === 'true') setDrawer(false); });
+    /* נייד: התפריט הוא פאנל צד של 75%; נגיעה באזור המעומעם סוגרת (זיו 11/11) */
+    d.addEventListener('click', function (e) { if (burger.getAttribute('aria-expanded') === 'true' && !drawer.contains(e.target) && !burger.contains(e.target)) setDrawer(false); });
   }
 
   /* ---------- חשיפה בגלילה ---------- */

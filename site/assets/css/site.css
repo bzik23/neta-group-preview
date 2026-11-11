@@ -533,6 +533,15 @@ input,select,textarea{font:inherit}
   .ftr-contact .ftr-mail-full{display:none}
   .ftr-contact .ftr-mail-short{display:inline}
 }
+/* נייד: תפריט ההמבורגר נפתח כפאנל צד מימין ב-75% מרוחב המסך, ושאר העמוד מעומעם (זיו 11/11) */
+@media (max-width:640px){
+  #drawer{inset:var(--hdr) 0 0 auto;width:75%;border-inline-end:1px solid var(--line-2);box-shadow:0 0 0 100vmax rgba(0,0,0,.6);transform:translateX(28px)}
+  /* רקע בהיר ועדין יותר מהשחור: אפור-גרפיט עם נגיעת סגול מהמותג למעלה ונחושת רכה למטה (זיו 11/11) */
+  #drawer{background:radial-gradient(130% 55% at 100% 0%,rgba(var(--accent-rgb),.20),transparent 62%),radial-gradient(110% 45% at 0% 100%,rgba(var(--accent3-rgb),.10),transparent 60%),var(--surface-2)}
+  .drawer .dgroup{border-bottom-color:rgba(var(--ink-rgb),.1)}
+  #drawer.open{transform:none}
+  #drawer .drawer-in{width:auto;margin:0;padding:12px 18px 40px}
+}
 .faq-list--inline{max-width:none}
 .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-s);transition:border-color var(--t)}
 .faq-item[open]{border-color:var(--line-accent)}
