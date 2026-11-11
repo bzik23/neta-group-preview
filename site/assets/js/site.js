@@ -118,7 +118,7 @@
     if (reduced || !('IntersectionObserver' in window)) return; /* פוסטר בלבד עד לחיצה */
     new IntersectionObserver(function (es) {
       es.forEach(function (e) {
-        if (soundOn) { if (!e.isIntersecting) v.pause(); return; }
+        if (soundOn) return; /* עם סאונד: ממשיך לרוץ גם כשגוללים הלאה (זיו 11/11) */
         if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause();
       });
     }, { threshold: 0.35 }).observe(fig);
