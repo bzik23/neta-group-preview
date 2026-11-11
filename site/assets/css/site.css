@@ -936,6 +936,8 @@ html.a11y-motion .hero-film--auto video{opacity:1}
   .paths-grid--slide::-webkit-scrollbar{display:none}
   .paths-grid--slide > .path{flex:0 0 86%;scroll-snap-align:start}
   .paths-grid--slide > .reveal{opacity:1;transform:none}
+  /* כרטיס הסרטון (בית + אודות): השם והתפקיד מעל הסרטון (זיו 11/11) */
+  .about-frame--video .about-name{order:-1;border-top:0;border-bottom:1px solid var(--line-accent)}
   .services-grid{grid-template-columns:1fr}
   .sindex-a{grid-template-columns:auto minmax(0,1fr);gap:4px 14px;padding:22px 2px 22px 4px}
   .sindex-go{display:none}
