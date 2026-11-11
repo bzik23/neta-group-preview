@@ -274,7 +274,11 @@ input,select,textarea{font:inherit}
 .office-name{color:var(--accent3)}
 .office-s strong{font-weight:700;color:#fff;background:linear-gradient(rgba(var(--accent3-rgb),.75),rgba(var(--accent3-rgb),.75)) no-repeat 0 100%/100% 2px;padding-bottom:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .office-s{margin:0;color:var(--ink);font-family:var(--font-display);font-weight:500;font-size:clamp(1.15rem,1.75vw,1.5rem);line-height:1.7;letter-spacing:-.005em;text-wrap:pretty}
-.office + .services{padding-top:clamp(48px,6vw,80px)}
+.office + .services{padding-top:clamp(72px,9vw,128px)}
+/* כותרת "בין שירותי המשרד" (זיו 11/11: "לרווח, פונטים לא 100%"): יותר אוויר, פסקה גדולה ונקייה עם קו נחושת, ומרווח לכרטיסיות */
+.services .section-head{align-items:end;margin-bottom:clamp(40px,5vw,68px)}
+.services .section-head h2{font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.12}
+.services .section-sub{justify-self:end;max-width:540px;padding-inline-start:22px;border-inline-start:2px solid rgba(var(--accent3-rgb),.55);font-size:clamp(1.04rem,1.25vw,1.14rem);line-height:1.75;color:var(--ink-2)}
 .services + .paths{padding-top:clamp(16px,3vw,40px)}
 
 /* עמוד הבית: אינדקס שירותים ממוספר (במקום גריד כרטיסים) */
