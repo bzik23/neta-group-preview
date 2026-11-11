@@ -58,7 +58,8 @@ input,select,textarea{font:inherit}
 .section-head--row{max-width:none;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px 56px;align-items:end}
 .section-head--top{align-items:start} /* לאן פונים: הטקסט בצד שמאל מיושר לראש העמודה הימנית (זיו 11/11) */
 .section-head h2{margin-bottom:0}
-.section-sub{color:var(--ink-2);margin:0;font-size:1.05rem;max-width:520px}
+.section-sub{color:var(--ink-2);margin:0;font-size:1.05rem;max-width:520px;text-wrap:pretty}
+.section-sub-2{display:block;margin-top:.55em}
 .eyebrow{display:flex;align-items:center;gap:12px;margin:0 0 14px;color:var(--accent2);font-weight:600;font-size:.85rem;letter-spacing:.06em}
 .eyebrow::before{content:"";width:28px;height:2px;border-radius:2px;background:var(--accent2);opacity:.9}
 .lead-p{font-size:1.15rem;color:var(--ink-2);line-height:1.65;max-width:62ch}
