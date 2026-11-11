@@ -98,11 +98,22 @@
     var lastEsc = 0;
     d.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
+      if (d.querySelector('dialog[open]')) { lastEsc = 0; return; } /* Esc סוגר את הדיאלוג, לא נספר ליציאה מהירה */
       var menuOpen = (mega && mega.classList.contains('open')) || (burger && burger.getAttribute('aria-expanded') === 'true');
       if (menuOpen) { lastEsc = 0; return; }
       var now = Date.now();
       if (now - lastEsc < 1000) quickExit(); else lastEsc = now;
     });
+  }
+
+  /* ---------- רישיון משרד המשפטים: תעודה בדיאלוג ---------- */
+  var licDlg = d.getElementById('lic-dlg');
+  if (licDlg && licDlg.showModal) {
+    d.querySelectorAll('[data-lic-open]').forEach(function (b) {
+      b.addEventListener('click', function () { licDlg.showModal(); });
+    });
+    licDlg.querySelector('[data-lic-close]').addEventListener('click', function () { licDlg.close(); });
+    licDlg.addEventListener('click', function (e) { if (e.target === licDlg) licDlg.close(); }); /* לחיצה על הרקע */
   }
 
   /* ---------- תוכן עניינים: הדגשת הסעיף שנקרא כעת ---------- */

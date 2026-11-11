@@ -363,6 +363,40 @@ input,select,textarea{font:inherit}
 .how .eyebrow::before{background:var(--accent3)}
 .how-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:24px clamp(32px,5vw,72px);align-items:end;margin-bottom:clamp(36px,5vw,60px)}
 .how-top .law{margin:0}
+/* אישורים: רישיון + יוצאי משטרה/שב"כ + משפט החובה (זיו 11/11) */
+.creds{background:linear-gradient(to left,rgba(var(--accent-rgb),.11),rgba(var(--accent-rgb),.04));border:1px solid var(--line-accent);border-radius:var(--radius);overflow:hidden}
+.creds-lic{display:flex;align-items:center;gap:20px;width:100%;padding:20px 22px;background:none;border:0;color:inherit;font:inherit;text-align:start;cursor:zoom-in}
+.creds-doc{flex:0 0 auto;width:78px;aspect-ratio:240/338;border-radius:4px;overflow:hidden;box-shadow:0 10px 24px -8px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08);transform:rotate(-3deg);transition:transform var(--t) var(--ease),box-shadow var(--t) var(--ease)}
+.creds-doc img{display:block;width:100%;height:100%;object-fit:cover}
+.creds-lic-txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.creds-k{color:var(--accent3);font-size:.84rem;letter-spacing:.02em}
+.creds-t{font-family:var(--font-display);font-weight:700;font-size:1.18rem;color:var(--ink);line-height:1.3}
+.creds-n{color:var(--ink-2);font-size:.98rem;font-variant-numeric:tabular-nums}
+.creds-more{display:inline-flex;align-items:center;gap:6px;margin-top:6px;color:var(--accent2);font-weight:600;font-size:.92rem}
+.creds-more .ic{width:17px;height:17px}
+.creds-lic:hover .creds-doc,.creds-lic:focus-visible .creds-doc{transform:rotate(0) scale(1.06);box-shadow:0 14px 30px -8px rgba(0,0,0,.75),0 0 0 1px rgba(var(--accent3-rgb),.5)}
+.creds-lic:hover .creds-more{text-decoration:underline;text-underline-offset:4px}
+.creds-lic:focus-visible{outline:2px solid var(--accent2);outline-offset:-4px}
+.creds-bg{padding:16px 22px;border-top:1px solid var(--line)}
+.creds-bg-k{margin:0 0 12px;color:var(--ink-3);font-size:.84rem;letter-spacing:.02em}
+.creds-bg ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.creds-bg li{display:flex;align-items:center;gap:12px;color:var(--ink-2);font-size:.95rem;line-height:1.35}
+.creds-bg li strong{color:var(--ink);font-weight:600;display:block}
+.creds-bg img{flex:0 0 auto;width:54px;height:54px;border-radius:50%;box-shadow:0 0 0 3px rgba(255,255,255,.06),0 6px 16px -6px rgba(0,0,0,.6)}
+.creds-law{display:flex;gap:12px;align-items:flex-start;margin:0;padding:14px 22px 16px;border-top:1px solid var(--line);color:var(--ink);font-weight:600;font-size:.95rem;line-height:1.5}
+.creds-law .law-ic .ic{width:22px;height:22px}
+.lic-dlg{padding:0;border:0;background:transparent;max-width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:visible}
+.lic-dlg::backdrop{background:rgba(6,7,9,.82);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.lic-dlg-in{position:relative;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
+.lic-dlg img{display:block;width:100%;height:auto;max-height:calc(100dvh - 130px);object-fit:contain;border-radius:4px}
+.lic-dlg p{margin:12px 4px 2px;color:var(--ink-3);font-size:.9rem;text-align:center}
+.lic-dlg p a{color:var(--accent2);border-bottom:1px solid currentColor}
+.lic-dlg-x{position:absolute;top:-14px;inset-inline-end:-14px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line-2);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+.lic-dlg-x:hover,.lic-dlg-x:focus-visible{border-color:var(--accent2);color:var(--accent2)}
+.lic-dlg[open]{animation:licIn .22s var(--ease)}
+@keyframes licIn{from{opacity:0;transform:translateY(8px) scale(.98)}}
+@media (max-width:520px){.creds-lic{gap:16px;padding:18px}.creds-doc{width:64px}.creds-bg,.creds-law{padding-inline:18px}.creds-bg ul{gap:10px}.creds-bg img{width:46px;height:46px}.lic-dlg-x{top:-10px;inset-inline-end:-6px}}
+@media (prefers-reduced-motion:reduce){.creds-doc{transition:none}.lic-dlg[open]{animation:none}}
 .how-top .lead-p{margin-bottom:0}
 .tline{--tg:clamp(20px,2.6vw,36px);list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--tg);position:relative}
 .tline::before{content:"";position:absolute;top:27px;inset-inline-start:28px;inset-inline-end:calc((100% - 3 * var(--tg)) / 4 - 28px);height:2px;background:rgba(var(--accent-rgb),.45)}
