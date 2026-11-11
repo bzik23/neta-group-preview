@@ -228,7 +228,7 @@ input,select,textarea{font:inherit}
 .path:hover::before{opacity:1}
 .path-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(var(--accent-rgb),.1);color:var(--accent2);border:1px solid var(--line-accent)}
 .path-ic .ic{width:22px;height:22px}
-.path-k{color:var(--accent);font-size:.82rem;letter-spacing:.06em;font-weight:500;margin-top:6px}
+.path-k{color:var(--accent3);font-size:.9rem;letter-spacing:.03em;font-weight:600;margin-top:6px}
 .path-t{font-family:var(--font-display);font-size:1.45rem;font-weight:700;line-height:1.2}
 .path-s{color:var(--ink-2);font-size:1.02rem;line-height:1.6;flex:1 1 auto}
 .path-more{display:inline-flex;align-items:center;gap:8px;color:var(--accent-light);font-weight:600;font-size:.95rem;margin-top:6px}
