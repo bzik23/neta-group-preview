@@ -516,7 +516,12 @@ input,select,textarea{font:inherit}
 .faq-chip:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
 .faq-more{margin:22px auto 0;display:flex}
 .faq-more .ic{width:18px;height:18px}
-@media (max-width:640px){.faq-chips{flex-wrap:nowrap;overflow-x:auto;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);padding-bottom:4px;scrollbar-width:none}.faq-chips::-webkit-scrollbar{display:none}.faq-chip{flex:0 0 auto}}
+/* נייד: כל הסינונים גלויים ברשת של 2 עמודות במקום גלילה אופקית חתוכה (זיו 11/11); "הכל" על כל הרוחב */
+@media (max-width:640px){
+  .faq-chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .faq-chip{justify-content:space-between;min-height:48px;padding:8px 12px 8px 10px;border-radius:14px;font-size:.9rem;line-height:1.3;text-align:start}
+  .faq-chip:first-child{grid-column:1/-1;justify-content:center;gap:10px}
+}
 .faq-list--inline{max-width:none}
 .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-s);transition:border-color var(--t)}
 .faq-item[open]{border-color:var(--line-accent)}
