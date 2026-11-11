@@ -106,6 +106,24 @@
     });
   }
 
+  /* ---------- כרטיס סרטון: שקט בלופ כשבתצוגה, כפתור = מההתחלה עם סאונד ---------- */
+  d.querySelectorAll('[data-avideo]').forEach(function (fig) {
+    var v = fig.querySelector('video'), sb = fig.querySelector('[data-avideo-sound]');
+    var soundOn = false;
+    sb.addEventListener('click', function () {
+      soundOn = true; fig.classList.add('is-sound');
+      v.loop = false; v.muted = false; v.controls = true; v.currentTime = 0;
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    });
+    if (reduced || !('IntersectionObserver' in window)) return; /* פוסטר בלבד עד לחיצה */
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (soundOn) { if (!e.isIntersecting) v.pause(); return; }
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause();
+      });
+    }, { threshold: 0.35 }).observe(fig);
+  });
+
   /* ---------- רישיון משרד המשפטים: תעודה בדיאלוג ---------- */
   var licDlg = d.getElementById('lic-dlg');
   if (licDlg && licDlg.showModal) {
