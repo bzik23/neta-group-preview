@@ -363,7 +363,7 @@ input,select,textarea{font:inherit}
 .how{position:relative;background:radial-gradient(45% 70% at 92% 20%,rgba(var(--accent-rgb),.12),transparent 70%),radial-gradient(40% 60% at 6% 85%,rgba(var(--accent3-rgb),.09),transparent 70%),linear-gradient(180deg,var(--bg-2),var(--bg))} /* הילות סגול (ימין) ונחושת (שמאל) */
 .how .eyebrow{color:var(--accent3)}
 .how .eyebrow::before{background:var(--accent3)}
-.how-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:24px clamp(32px,5vw,72px);align-items:end;margin-bottom:clamp(36px,5vw,60px)}
+.how-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:24px clamp(32px,5vw,72px);align-items:start;margin-bottom:clamp(36px,5vw,60px)}
 .how-top .law{margin:0}
 /* אישורים: רישיון + יוצאי משטרה/שב"כ + משפט החובה (זיו 11/11) */
 .creds{background:linear-gradient(to left,rgba(var(--accent-rgb),.11),rgba(var(--accent-rgb),.04));border:1px solid var(--line-accent);border-radius:var(--radius);overflow:hidden}
