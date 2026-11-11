@@ -513,10 +513,14 @@
       <label for="lead-page-when">מתי נוח שנחזור? <span class="muted">(לא חובה)</span></label>
       <select id="lead-page-when" name="callback">
         <option value="בכל שעה">בכל שעה שנוחה לכם</option>
-        <option value="בוקר (08:00-12:00)">בוקר (08:00-12:00)</option>
-        <option value="צהריים (12:00-16:00)">צהריים (12:00-16:00)</option>
-        <option value="אחר הצהריים (16:00-19:00)">אחר הצהריים (16:00-19:00)</option>
-        <option value="ערב (19:00-22:00)">ערב (19:00-22:00)</option>
+        <optgroup label="בוקר">
+<option value="08:00-09:00">08:00-09:00</option><option value="09:00-10:00">09:00-10:00</option><option value="10:00-11:00">10:00-11:00</option><option value="11:00-12:00">11:00-12:00</option>        </optgroup>
+        <optgroup label="צהריים">
+<option value="12:00-13:00">12:00-13:00</option><option value="13:00-14:00">13:00-14:00</option><option value="14:00-15:00">14:00-15:00</option><option value="15:00-16:00">15:00-16:00</option>        </optgroup>
+        <optgroup label="אחר הצהריים">
+<option value="16:00-17:00">16:00-17:00</option><option value="17:00-18:00">17:00-18:00</option><option value="18:00-19:00">18:00-19:00</option>        </optgroup>
+        <optgroup label="ערב">
+<option value="19:00-20:00">19:00-20:00</option><option value="20:00-21:00">20:00-21:00</option><option value="21:00-22:00">21:00-22:00</option>        </optgroup>
       </select>
     </div>
     <div class="field field-consent">
