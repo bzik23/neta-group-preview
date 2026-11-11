@@ -124,6 +124,31 @@
     }, { threshold: 0.35 }).observe(fig);
   });
 
+  /* ---------- שאלות ותשובות: סינון לפי נושא ---------- */
+  d.querySelectorAll('[data-faq-filter]').forEach(function (sec) {
+    var peek = +sec.getAttribute('data-peek') || 8;
+    var chips = sec.querySelectorAll('.faq-chip'), items = sec.querySelectorAll('.faq-item'), more = sec.querySelector('[data-faq-more]');
+    var cur = 'all', expanded = false;
+    function render() {
+      var n = 0;
+      items.forEach(function (it) {
+        var match = cur === 'all' || it.getAttribute('data-topic') === cur;
+        var show = match && (cur !== 'all' || expanded || n < peek);
+        if (match) n++;
+        it.hidden = !show;
+      });
+      if (more) more.hidden = cur !== 'all' || expanded;
+    }
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        cur = c.getAttribute('data-topic');
+        chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+        render();
+      });
+    });
+    if (more) more.addEventListener('click', function () { expanded = true; render(); });
+  });
+
   /* ---------- רישיון משרד המשפטים: תעודה בדיאלוג ---------- */
   var licDlg = d.getElementById('lic-dlg');
   if (licDlg && licDlg.showModal) {
