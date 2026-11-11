@@ -522,6 +522,17 @@ input,select,textarea{font:inherit}
   .faq-chip{justify-content:space-between;min-height:48px;padding:8px 12px 8px 10px;border-radius:14px;font-size:.9rem;line-height:1.3;text-align:start}
   .faq-chip:first-child{grid-column:1/-1;justify-content:center;gap:10px}
 }
+/* נייד: טלפון / וואטסאפ / מייל בפוטר - שלוש אריחים אחד ליד השני, כל אריח לחיץ במלואו (זיו 11/11) */
+@media (max-width:640px){
+  .ftr-contact{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .ftr-contact li{position:relative;flex-direction:column;justify-content:center;gap:7px;min-height:84px;padding:12px 6px;border:1px solid var(--line-2);border-radius:14px;background:rgba(var(--ink-rgb),.035);text-align:center;transition:border-color var(--t)}
+  .ftr-contact li:hover{border-color:var(--accent3)}
+  .ftr-contact .ic{width:22px;height:22px}
+  .ftr-contact a{font-size:.88rem;white-space:nowrap}
+  .ftr-contact a::after{content:"";position:absolute;inset:0;border-radius:inherit}
+  .ftr-contact .ftr-mail-full{display:none}
+  .ftr-contact .ftr-mail-short{display:inline}
+}
 .faq-list--inline{max-width:none}
 .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-s);transition:border-color var(--t)}
 .faq-item[open]{border-color:var(--line-accent)}
@@ -732,6 +743,7 @@ input,select,textarea{font:inherit}
 .ftr-contact li{display:flex;align-items:center;gap:10px;color:var(--ink-2)}
 .ftr-contact .ic{color:var(--accent2)}
 .ftr-contact a{color:var(--ink);font-weight:500}
+.ftr-mail-short{display:none}
 .ftr-h{font-family:var(--font-display);font-size:1.05rem;margin:0 0 14px;color:var(--accent-light)}
 .ftr-col ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 .ftr-col a{color:var(--ink-3);font-size:.93rem}
@@ -954,7 +966,9 @@ html.a11y-motion .hero-film--auto video{opacity:1}
   .trust-item::before,.trust-item:nth-child(2n)::before{inset-inline-start:0}
   .trust-item:nth-child(2){border-top:1px solid var(--line)}
   .lead{padding:20px 18px}
-  .ftr-top{grid-template-columns:1fr}
+  .ftr-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px} /* פוטר בנייד: 2 עמודות קישורים (זיו 11/11) */
+  .ftr-col .ftr-h{font-size:1rem}
+  .ftr-col a{font-size:.88rem;line-height:1.4}
   .ftr-bottom{flex-direction:column}
   .phead-btns .btn{flex:1 1 100%}
   .closing-btns .btn{flex:1 1 calc(50% - 6px)}
